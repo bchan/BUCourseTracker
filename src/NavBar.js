@@ -12,7 +12,8 @@ const useStyles = theme => ({
         marginRight: theme.spacing(2),
     },
     bar: {
-        background: "#0f2862",
+        background: "transparent",//"#0f2862",
+        boxShadow: "none",
     },
     title: {
         flexGrow: 1,
