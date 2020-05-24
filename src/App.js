@@ -3,6 +3,7 @@ import React from 'react';
 import boston_terrier from './boston_terrier.png'
 import './App.css';
 import NavBar from "./NavBar";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -13,9 +14,13 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <img src={boston_terrier} className="App-logo" />
+        
         <p>
+          <img src={boston_terrier} className="App-logo" alt="logo"/>
+          <br />
           Didn't get into a class? <a className="App-link">Track</a> it now!
+          <br />
+          <Link className="App-link" to="/signIn">Log in</Link> or <a className="App-link">sign up</a> to get started.
         </p>
         {/* <a
           className="App-link"

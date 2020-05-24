@@ -7,6 +7,9 @@ import GpsFixedIcon from '@material-ui/icons/GpsFixed';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 
+import { Link } from "react-router-dom";
+
+
 const useStyles = theme => ({
     menuButton: {
         marginRight: theme.spacing(2),
@@ -24,9 +27,9 @@ const useStyles = theme => ({
 });
 
 class NavBar extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         const { classes } = this.props;
@@ -34,14 +37,14 @@ class NavBar extends Component {
         return (
         <AppBar className={classes.bar} elevation={0}>
             <Toolbar>
-                <IconButton className={classes.menuButton} color="inherit">
+                <IconButton className={classes.menuButton} color="inherit" component={Link} to="/">
                     <GpsFixedIcon />
                 </IconButton>
                 <Typography variant="h6">
                     BU Course Tracker
                 </Typography>
-                <Button color="inherit" className={classes.loginButton}>
-                    Login
+                <Button color="inherit" className={classes.loginButton} component={Link} to="/signIn">
+                    Log In
                 </Button>
             </Toolbar>
         </AppBar>
