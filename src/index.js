@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import NavBar from "./NavBar";
 import SignIn from "./SignIn";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
 
 const NotFound = () => {
     return (
