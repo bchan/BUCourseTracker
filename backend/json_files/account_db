@@ -1,0 +1,16 @@
+{
+    "accounts": [
+        {
+            "firstName": "Bob",
+            "lastName": "Jenkins",
+            "email": "bobjenkins@jenkins.com",
+            "password": "insecure"
+        },
+        {
+            "firstName": "Bob",
+            "lastName": "Jenkins",
+            "email": "bobjen@jenkins.com",
+            "password": "insecure"
+        }
+    ]
+}
