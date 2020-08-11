@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import re
 from dictionaries import collegesDictionary, departmentsDictionary
+import boto3
 
 
 # Returns a soup object for the inputted url
@@ -97,19 +98,31 @@ def get_course_list(soup):
         coursePrereqList, coursePrereqString = get_prereqs(descriptionPtags[0])
         courseCollege, courseDepartment = get_college_dept(courseCode)
 
-        courseDictionary = {'Code': courseCode, 
-                            'Name': courseName,
-                            'College': courseCollege,
-                            'Department': courseDepartment,
-                            'Description': courseDescription,
-                            'Credits': courseCredits, 
-                            'HubList': courseHubList,
-                            'PrereqList': coursePrereqList,
-                            'PrereqString': coursePrereqString}
+        courseDictionary = {'code': courseCode, 
+                            'name': courseName,
+                            'college': courseCollege,
+                            'department': courseDepartment,
+                            'description': courseDescription,
+                            'credits': courseCredits, 
+                            'hubList': courseHubList,
+                            'prereqList': coursePrereqList,
+                            'prereqString': coursePrereqString}
 
         courseList.append(courseDictionary)
 
     return courseList
+
+
+# Writes all the course information to dynamodb
+def write_courses_db():
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('courses')
+
+    with open('courses.json') as json_file:
+        data = json.load(json_file)
+        with table.batch_writer() as batch:
+            for course in data:
+                batch.put_item(Item=course)
 
 
 # Uses new course search website to gather all courses and parses
